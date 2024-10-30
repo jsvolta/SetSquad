@@ -60,6 +60,23 @@ app.put('/api/player/:id', async (req, res) => {
 
 })
 
+app.delete('/api/player/:id', async (req, res) => {
+    const {id} = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        console.log(`Error in update player: ${error.message}`);
+        return res.status(404).json({ success: false, message: "Invalid player id" });
+    }
+
+    try {
+        await Player.findByIdAndDelete(id);
+        res.status(200).json({ success: true, message: "Player deleted" });
+    } catch (error) {
+        console.log(`Error in delete player: ${error.message}`);
+        res.status(500).json({ success: false, message: "Server Error" });
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`Server started at 127.0.0.1:${PORT}`);
     connectDB()
