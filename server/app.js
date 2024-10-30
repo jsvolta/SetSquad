@@ -7,6 +7,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT||5000;
 
+app.use(express.json());
+
 app.listen(PORT, () => {
     console.log(`Server started at 127.0.0.1:${PORT}`);
     connectDB()
