@@ -10,6 +10,16 @@ const PORT = process.env.PORT||5000;
 
 app.use(express.json());
 
+app.get('/api/player', async (req, res) => {
+    try {
+        const players = await Player.find({});
+        res.status(200).json({ success: true, data: players });
+    } catch (error) {
+        console.error(`Error in fetching players: ${error.message}`);
+        res.status(500).json({ success: false, message: "Failed to get players"});
+    }
+})
+
 app.post('/api/player', async (req, res) => {
     const player = req.body;
 
