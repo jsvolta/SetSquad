@@ -1,0 +1,15 @@
+{
+  "name": "setsquad-server",
+  "version": "1.0.0",
+  "description": "The server code for setsquad",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:https://github.com/jsvolta/SetSquad.git"
+  },
+  "author": "Jaden Christie",
+  "license": "GPL-3.0-or-later"
+}
