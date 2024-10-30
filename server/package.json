@@ -11,5 +11,8 @@
     "url": "git:https://github.com/jsvolta/SetSquad.git"
   },
   "author": "Jaden Christie",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
