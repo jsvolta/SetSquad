@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import Player from './models/player.model.js'
+import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -36,6 +37,27 @@ app.post('/api/player', async (req, res) => {
         console.log(`Error in Create player: ${error.message}`);
         res.status(500).json({ success: false, message: "Server Error" });
     }
+})
+
+app.put('/api/player/:id', async (req, res) => {
+    const {id} = req.params;
+
+    const player = req.body;
+
+    // Where is the error from?
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        console.log(`Error in update player: ${error.message}`);
+        return res.status(404).json({ success: false, message: "Invalid player id" });
+    }
+
+    try {
+        const updatedPlayer = await Player.findByIdAndUpdate(id, player, {new:true});
+        res.status(200).json({success:true, data: updatedPlayer})
+    } catch (error) {
+        console.log(`Error in update player: ${error.message}`);
+        res.status(500).json({success:false, message:"Server Error"});
+    }
+
 })
 
 app.listen(PORT, () => {
