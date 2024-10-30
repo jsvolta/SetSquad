@@ -1,6 +1,7 @@
 {
   "name": "setsquad-server",
   "version": "1.0.0",
+  "type": "module",
   "description": "The server code for setsquad",
   "main": "app.js",
   "scripts": {
