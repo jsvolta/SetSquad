@@ -44,9 +44,7 @@ app.put('/api/player/:id', async (req, res) => {
 
     const player = req.body;
 
-    // Where is the error from?
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        console.error(`Error in update player: ${error.message}`);
         return res.status(404).json({ success: false, message: "Invalid player id" });
     }
 
