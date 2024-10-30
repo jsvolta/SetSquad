@@ -62,7 +62,6 @@ app.delete('/api/player/:id', async (req, res) => {
     const {id} = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        console.error(`Error in update player: ${error.message}`);
         return res.status(404).json({ success: false, message: "Invalid player id" });
     }
 
